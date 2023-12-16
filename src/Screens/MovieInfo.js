@@ -1,18 +1,19 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TOKEN } from '../constant'
 
 const MovieInfo = ({ navigation, route }) => {
+    const { height, width } = useWindowDimensions()
     const { item } = route.params
-    const [movieDetails,setMovieDetails]=useState({})
+    const [movieDetails, setMovieDetails] = useState({})
 
-    useEffect(()=>{
-       getMovieData()
-    },[])
+    useEffect(() => {
+        getMovieData()
+    }, [])
 
 
     const getMovieData = () => {
-       
+
         const options = {
             method: 'GET',
             headers: {
@@ -31,17 +32,19 @@ const MovieInfo = ({ navigation, route }) => {
         <View style={styles.container}>
             <View>
                 <Image
-                // src={}
+                    source={{ uri: `https://image.tmdb.org/t/p/original${movieDetails.poster_path}` }}
+                    style={{ width: width - 70, height: height / 2.5, borderWidth: 0.2, borderColor: 'black' }}
+                    resizeMode='contain'
                 />
             </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.infoContainer}>
                 <Text style={styles.textStyle}>{item.title}</Text>
                 <Text style={styles.textStyle}>Rating: {item.vote_average}</Text>
                 <Text style={styles.textStyle}>Lang:{item.original_language}</Text>
                 <Text style={styles.textStyle}>Category:{item.adult ? 'A' : 'U/A'}</Text>
                 <Text style={styles.textStyle}>Runtime:{movieDetails.runtime} M</Text>
-                <Text style={[styles.textStyle,{marginTop:24}]}>{movieDetails.tagline}</Text>
-                <Text style={[styles.textStyle,{marginTop:24,fontSize:32}]}>{movieDetails.status}</Text>
+                <Text style={[styles.textStyle, { marginTop: 24 }]}>{movieDetails.tagline}</Text>
+                <Text style={[styles.textStyle, { marginTop: 24, fontSize: 32 }]}>{movieDetails.status}</Text>
             </View>
 
         </View>
@@ -63,8 +66,12 @@ const styles = StyleSheet.create({
     textStyle: {
         fontSize: 18,
         color: '#000',
-        textAlign:'center'
-
+        textAlign: 'center'
+    },
+    infoContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 16
     }
 
 })

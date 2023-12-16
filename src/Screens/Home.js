@@ -18,7 +18,7 @@ const Home = ({ navigation }) => {
     const [filteredMoviesData, setFilteredMoviesData] = useState([])
     const [pageNo, setPageNo] = useState(1)
     const [showLoadMore, setShowLoadMore] = useState(false)
-  
+
 
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const Home = ({ navigation }) => {
 
         fetch(`${URL}${pageNo}`, options).then(resp => resp.json())
             .then(result => {
-                setPageNo(prev=>prev+1)
+                setPageNo(prev => prev + 1)
                 setData(prev => [prev, result])
                 setMoviesData(prev => [...prev, ...result.results])
                 setFilteredMoviesData(prev => [...prev, ...result.results])
@@ -83,12 +83,12 @@ const Home = ({ navigation }) => {
                     value={query}
                     onChangeText={txt => setQuery(txt)}
                     placeholder='Search Movies Here...'
-                   style={{  color:'#000'}}
+                    style={{ color: '#000' }}
                 />
             </View>
             <FlatList
                 data={filteredMoviesData}
-                keyExtractor={(item, index) => (item.id+index).toString()}
+                keyExtractor={(item, index) => (item.id + index).toString()}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => onPressHandler(item)}>
                         <MovieCard item={item} />
