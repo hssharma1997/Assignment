@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 
 const MovieCard = ({ item }) => {
     return (
@@ -14,7 +14,7 @@ const MovieCard = ({ item }) => {
     )
 }
 
-export default MovieCard
+export default memo(MovieCard)
 
 const styles = StyleSheet.create({
     container: {
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         marginHorizontal: 16,
         borderRadius: 12,
-        padding: 8
+        padding: 8,
+        color:'#000'
     }
 })

@@ -24,7 +24,6 @@ const MovieInfo = ({ navigation, route }) => {
         fetch(`https://api.themoviedb.org/3/movie/${item.id}?language=en-US`, options).then(resp => resp.json())
             .then(result => {
                 setMovieDetails(result)
-                console.log(result);
             })
             .catch(e => console.log(e))
     }

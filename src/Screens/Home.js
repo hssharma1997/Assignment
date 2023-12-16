@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import MovieCard from '../Components/MovieCard'
-// import Toast from 'react-native-toast-message'
+import Toast from 'react-native-toast-message'
 
 import { TOKEN } from '../constant';
 
@@ -40,7 +40,6 @@ const Home = ({ navigation }) => {
 
         fetch(`${URL}${pageNo}`, options).then(resp => resp.json())
             .then(result => {
-                console.log(pageNo);
                 setPageNo(prev=>prev+1)
                 setData(prev => [prev, result])
                 setMoviesData(prev => [...prev, ...result.results])
@@ -59,10 +58,10 @@ const Home = ({ navigation }) => {
             setShowLoadMore(false)
         }
         else {
-            // Toast.show({
-            //     type: 'info',
-            //     text1: 'No More Movies Found...'
-            // });
+            Toast.show({
+                type: 'info',
+                text1: 'No More Movies Found...'
+            });
         }
 
     }
@@ -84,7 +83,7 @@ const Home = ({ navigation }) => {
                     value={query}
                     onChangeText={txt => setQuery(txt)}
                     placeholder='Search Movies Here...'
-
+                   style={{  color:'#000'}}
                 />
             </View>
             <FlatList
