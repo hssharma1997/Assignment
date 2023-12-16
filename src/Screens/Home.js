@@ -99,7 +99,7 @@ const Home = ({ navigation }) => {
 
             />
             {showLoadMore && <TouchableOpacity style={styles.loadBtn} onPress={() => getMoreMovie()}>
-                <Text>Load More...</Text>
+                <Text style={{color:'#000'}}>Load More...</Text>
             </TouchableOpacity>}
         </View>
     )
