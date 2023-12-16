@@ -6,9 +6,9 @@ const MovieCard = ({ item }) => {
         <View style={styles.container}>
 
             <View>
-                <Text>Title:{item.title}</Text>
-                <Text>Release Data:{item.release_date}</Text>
-                <Text>Overview:{item.overview}</Text>
+                <Text style={styles.textStyle}>Title:{item.title}</Text>
+                <Text style={styles.textStyle}>Release Data:{item.release_date}</Text>
+                <Text style={styles.textStyle}>Overview:{item.overview}</Text>
             </View>
         </View>
     )
@@ -25,5 +25,8 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 8,
         color: '#000'
+    },
+    textStyle:{
+        color:'#000'
     }
 })
