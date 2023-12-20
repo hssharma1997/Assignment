@@ -6,9 +6,9 @@ const MovieCard = ({ item }) => {
         <View style={styles.container}>
 
             <View>
-                <Text style={styles.textStyle}>Title:{item.title}</Text>
-                <Text style={styles.textStyle}>Release Data:{item.release_date}</Text>
-                <Text style={styles.textStyle}>Overview:{item.overview}</Text>
+                <Text style={styles.textStyle}><Text style={{fontWeight:'bold',fontSize:18}}>Title: </Text>{item.title}</Text>
+                <Text style={styles.textStyle}><Text style={{fontWeight:'bold',fontSize:18}}>Release Data: </Text>{item.release_date}</Text>
+                <Text style={styles.textStyle}><Text style={{fontWeight:'bold',fontSize:18}}>Overview: </Text>{item.overview}</Text>
             </View>
         </View>
     )
@@ -18,15 +18,19 @@ export default memo(MovieCard)
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
-        borderColor: '#000',
+        borderWidth: 2,
+        borderColor: '#9f9f9f',
         marginVertical: 8,
         marginHorizontal: 16,
         borderRadius: 12,
-        padding: 8,
-        color: '#000'
+        padding: 28,
+        color: '#000',
+        backgroundColor:'#fff',
+        elevation:1
     },
     textStyle:{
-        color:'#000'
+        color:'#000',
+        textAlign:'center',
+        lineHeight:28
     }
 })
